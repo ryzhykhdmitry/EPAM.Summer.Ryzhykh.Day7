@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JaggedArrayBubble", "Jagged
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JaggedArrayBubble.Tests", "JaggedArrayBubble.Tests\JaggedArrayBubble.Tests.csproj", "{D1A2C6B4-DAB0-4DBF-86BF-A9CC0A690EAE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Book", "Book", "{0195042E-0145-4055-9E4B-1CE7618AA00F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Figures", "Figures\Figures.csproj", "{9427039E-4E4B-4C35-AD7B-EB477C888ED8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLogicLayer", "BookLogicLayer\BookLogicLayer.csproj", "{37D2EC84-3D86-4F99-A67F-6266ABE8555C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +27,19 @@ Global
 		{D1A2C6B4-DAB0-4DBF-86BF-A9CC0A690EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1A2C6B4-DAB0-4DBF-86BF-A9CC0A690EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1A2C6B4-DAB0-4DBF-86BF-A9CC0A690EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9427039E-4E4B-4C35-AD7B-EB477C888ED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9427039E-4E4B-4C35-AD7B-EB477C888ED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9427039E-4E4B-4C35-AD7B-EB477C888ED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9427039E-4E4B-4C35-AD7B-EB477C888ED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37D2EC84-3D86-4F99-A67F-6266ABE8555C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D2EC84-3D86-4F99-A67F-6266ABE8555C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37D2EC84-3D86-4F99-A67F-6266ABE8555C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37D2EC84-3D86-4F99-A67F-6266ABE8555C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{37D2EC84-3D86-4F99-A67F-6266ABE8555C} = {0195042E-0145-4055-9E4B-1CE7618AA00F}
 	EndGlobalSection
 EndGlobal
