@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CustomComparers;
 
 namespace JaggedArrayBubble
 {
@@ -12,10 +13,10 @@ namespace JaggedArrayBubble
     /// </summary>
     public sealed class BubbleSort
     {
-        public interface ICustomComparer
-        {
-            int Compare(int[] arr1, int[] arr2);
-        }
+        //public interface ICustomComparer
+        //{
+        //    int Compare(int[] arr1, int[] arr2);
+        //}
         /// <summary>
         /// Sort jagged array.
         /// </summary>

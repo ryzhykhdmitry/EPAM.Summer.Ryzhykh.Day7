@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using JaggedArrayBubble;
 using JaggedArrayBubble.Tests;
+using CustomComparers;
 
 
 namespace JaggedArrayBubble.Tests
@@ -16,7 +17,7 @@ namespace JaggedArrayBubble.Tests
     /// <summary>
     /// Comparing by sum by asc
     /// </summary>
-    public class CompareBySumAsc : BubbleSort.ICustomComparer
+    public class CompareBySumAsc : ICustomComparer
     {
         public int Compare(int[] arr1, int[] arr2)
         {
@@ -33,7 +34,7 @@ namespace JaggedArrayBubble.Tests
     /// <summary>
     /// Comparing by sum by desc
     /// </summary>
-    public class CompareBySumDesc : BubbleSort.ICustomComparer
+    public class CompareBySumDesc : ICustomComparer
     {
         public int Compare(int[] arr1, int[] arr2)
         {
@@ -50,7 +51,7 @@ namespace JaggedArrayBubble.Tests
     /// <summary>
     /// Comparing by max value by asc
     /// </summary>
-    public class CompareByMaxValueAsc : BubbleSort.ICustomComparer
+    public class CompareByMaxValueAsc : ICustomComparer
     {
         public int Compare(int[] arr1, int[] arr2)
         {
@@ -68,7 +69,7 @@ namespace JaggedArrayBubble.Tests
     /// <summary>
     /// Comparing by max value by desc
     /// </summary>
-    public class CompareByMaxValueDesc : BubbleSort.ICustomComparer
+    public class CompareByMaxValueDesc : ICustomComparer
     {
         public int Compare(int[] arr1, int[] arr2)
         {
