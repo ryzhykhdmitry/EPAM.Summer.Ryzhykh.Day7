@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,24 +7,21 @@ using CustomComparers;
 
 namespace JaggedArrayBubble
 {
-    /// <summary>
-    /// Allows to sorg jagged array.
-    /// </summary>
-    public sealed class BubbleSort
+    public sealed class BubbleSortWithDelegate
     {
-        
         /// <summary>
         /// Sort jagged array.
         /// </summary>
         /// <param name="arr">Array.</param>
         /// <param name="compare">The implementation to use when comparing elements.</param>
-        public static void SortArray(int[][] arr, ICustomComparer comparer)
+        public static void SortArray(int[][] arr, Delegate comparerDelegate)
         {
             for (int i = 0; i < arr.Length; i++)
             {
                 for (int j = i + 1; j < arr.Length; j++)
                 {
-                    if (comparer.Compare(arr[i], arr[j]) == 1)
+                    var result = comparerDelegate.DynamicInvoke(arr[i], arr[j]);
+                    if ((int)result == 1)
                     {
                         Swap(ref arr[i], ref arr[j]);
                     }
@@ -37,12 +33,12 @@ namespace JaggedArrayBubble
         /// Sort jagged array.
         /// </summary>
         /// <param name="arr">Array</param>
-        /// <param name="comparer">Delegate with comparer.</param>
-        public static void SortArray(int[][] arr, Delegate comparerDelegate)
+        /// <param name="comparer">Comparer.</param>
+        public static void SortArray(int[][] arr, ICustomComparer comparer)
         {
-            var comparer = (ICustomComparer)comparerDelegate.Target;        
-            BubbleSort.SortArray(arr, comparer);
-        } 
+            ComparersDelegate comparerDelegate = comparer.Compare;
+            BubbleSortWithDelegate.SortArray(arr, comparerDelegate);
+        }
 
         /// <summary>
         /// Allows to swap arrays. 
@@ -55,5 +51,8 @@ namespace JaggedArrayBubble
             arr1 = arr2;
             arr2 = temp;
         }
+
+        private delegate int ComparersDelegate(int[] arr1, int[] arr2);
     }
 }
+

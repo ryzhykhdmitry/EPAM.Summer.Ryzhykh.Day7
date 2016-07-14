@@ -10,10 +10,12 @@ using JaggedArrayBubble.Tests;
 using CustomComparers;
 
 
+
 namespace JaggedArrayBubble.Tests
 {
-    #region Comparers test data
     
+    #region Comparers test data
+
     /// <summary>
     /// Comparing by sum by asc
     /// </summary>
@@ -175,6 +177,8 @@ namespace JaggedArrayBubble.Tests
     [TestFixture]
     public class Tests
     {
+        public delegate int ComparersDelegate(int[] arr1, int[] arr2);
+
         [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareBySumAsc")]
         public void BubbleSortBySumAsc_ArrayAndComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
         {
@@ -204,6 +208,54 @@ namespace JaggedArrayBubble.Tests
         {
             CompareByMaxValueDesc compare = new CompareByMaxValueDesc();
             BubbleSort.SortArray(argumentArray, compare);
+            Assert.AreEqual(argumentArray, resultArray);
+        }
+
+        [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareBySumAsc")]
+        public void BubbleSortBySumAsc_ArrayAndDelegateWithComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
+        {           
+            ComparersDelegate compDelegate = (new CompareBySumAsc()).Compare;            
+            BubbleSort.SortArray(argumentArray, compDelegate);
+            Assert.AreEqual(argumentArray, resultArray);
+        }
+
+        [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareBySumDesc")]
+        public void BubbleSortBySumDesc_ArrayAndDelegateWithComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
+        {
+            ComparersDelegate compDelegate = (new CompareBySumDesc()).Compare;
+            BubbleSort.SortArray(argumentArray, compDelegate);
+            Assert.AreEqual(argumentArray, resultArray);
+        }
+
+        [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareByMaxValueAsc")]
+        public void BubbleSortByMaxValueAsc_ArrayAndDelegateWithComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
+        {
+            ComparersDelegate compDelegate = (new CompareByMaxValueAsc()).Compare;
+            BubbleSort.SortArray(argumentArray, compDelegate);
+            Assert.AreEqual(argumentArray, resultArray);
+        }
+
+        [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareByMaxValueDesc")]
+        public void BubbleSortByMaxValueDesc_ArrayAndDelegateWithComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
+        {
+            ComparersDelegate compDelegate = (new CompareByMaxValueDesc()).Compare;
+            BubbleSort.SortArray(argumentArray, compDelegate);
+            Assert.AreEqual(argumentArray, resultArray);
+        }
+
+        [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareBySumAsc")]
+        public void BubbleSortWithDelegateBySumAsc_ArrayAndDelegateWithComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
+        {
+            ComparersDelegate compDelegate = (new CompareBySumAsc()).Compare;
+            BubbleSortWithDelegate.SortArray(argumentArray, compDelegate);
+            Assert.AreEqual(argumentArray, resultArray);
+        }
+
+        [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareBySumAsc")]
+        public void BubbleSortWithDelegateBySumAsc_ArrayAndComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
+        {
+            CompareBySumAsc compare = new CompareBySumAsc();
+            BubbleSortWithDelegate.SortArray(argumentArray, compare);
             Assert.AreEqual(argumentArray, resultArray);
         }
     } 
