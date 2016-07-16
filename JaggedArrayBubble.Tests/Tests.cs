@@ -5,11 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using JaggedArrayBubble;
-using JaggedArrayBubble.Tests;
-using CustomComparers;
-
-
 
 namespace JaggedArrayBubble.Tests
 {
@@ -19,7 +14,7 @@ namespace JaggedArrayBubble.Tests
     /// <summary>
     /// Comparing by sum by asc
     /// </summary>
-    public class CompareBySumAsc : ICustomComparer
+    public class CompareBySumAsc : IComparer<int[]>
     {
         public int Compare(int[] arr1, int[] arr2)
         {
@@ -36,7 +31,7 @@ namespace JaggedArrayBubble.Tests
     /// <summary>
     /// Comparing by sum by desc
     /// </summary>
-    public class CompareBySumDesc : ICustomComparer
+    public class CompareBySumDesc : IComparer<int[]>
     {
         public int Compare(int[] arr1, int[] arr2)
         {
@@ -53,7 +48,7 @@ namespace JaggedArrayBubble.Tests
     /// <summary>
     /// Comparing by max value by asc
     /// </summary>
-    public class CompareByMaxValueAsc : ICustomComparer
+    public class CompareByMaxValueAsc : IComparer<int[]>
     {
         public int Compare(int[] arr1, int[] arr2)
         {
@@ -71,7 +66,7 @@ namespace JaggedArrayBubble.Tests
     /// <summary>
     /// Comparing by max value by desc
     /// </summary>
-    public class CompareByMaxValueDesc : ICustomComparer
+    public class CompareByMaxValueDesc : IComparer<int[]>
     {
         public int Compare(int[] arr1, int[] arr2)
         {
@@ -213,8 +208,8 @@ namespace JaggedArrayBubble.Tests
 
         [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareBySumAsc")]
         public void BubbleSortBySumAsc_ArrayAndDelegateWithComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
-        {           
-            ComparersDelegate compDelegate = (new CompareBySumAsc()).Compare;            
+        {            
+            Func<int[], int[], int> compDelegate = new CompareBySumAsc().Compare; 
             BubbleSort.SortArray(argumentArray, compDelegate);
             Assert.AreEqual(argumentArray, resultArray);
         }
@@ -222,7 +217,7 @@ namespace JaggedArrayBubble.Tests
         [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareBySumDesc")]
         public void BubbleSortBySumDesc_ArrayAndDelegateWithComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
         {
-            ComparersDelegate compDelegate = (new CompareBySumDesc()).Compare;
+            Func<int[], int[], int> compDelegate = new CompareBySumDesc().Compare;
             BubbleSort.SortArray(argumentArray, compDelegate);
             Assert.AreEqual(argumentArray, resultArray);
         }
@@ -230,7 +225,7 @@ namespace JaggedArrayBubble.Tests
         [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareByMaxValueAsc")]
         public void BubbleSortByMaxValueAsc_ArrayAndDelegateWithComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
         {
-            ComparersDelegate compDelegate = (new CompareByMaxValueAsc()).Compare;
+            Func<int[], int[], int> compDelegate = new CompareByMaxValueAsc().Compare;
             BubbleSort.SortArray(argumentArray, compDelegate);
             Assert.AreEqual(argumentArray, resultArray);
         }
@@ -238,7 +233,7 @@ namespace JaggedArrayBubble.Tests
         [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareByMaxValueDesc")]
         public void BubbleSortByMaxValueDesc_ArrayAndDelegateWithComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
         {
-            ComparersDelegate compDelegate = (new CompareByMaxValueDesc()).Compare;
+            Func<int[], int[], int> compDelegate = new CompareByMaxValueDesc().Compare;
             BubbleSort.SortArray(argumentArray, compDelegate);
             Assert.AreEqual(argumentArray, resultArray);
         }
@@ -246,7 +241,7 @@ namespace JaggedArrayBubble.Tests
         [Test, TestCaseSource(typeof(DataClass), "TestArraysForCompareBySumAsc")]
         public void BubbleSortWithDelegateBySumAsc_ArrayAndDelegateWithComparer_SortedArray(int[][] argumentArray, int[][] resultArray)
         {
-            ComparersDelegate compDelegate = (new CompareBySumAsc()).Compare;
+            Func<int[], int[], int> compDelegate = new CompareBySumAsc().Compare;
             BubbleSortWithDelegate.SortArray(argumentArray, compDelegate);
             Assert.AreEqual(argumentArray, resultArray);
         }

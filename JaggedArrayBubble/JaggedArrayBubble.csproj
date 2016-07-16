@@ -44,12 +44,6 @@
     <Compile Include="BubbleSortWithDelegate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CustomComparers\CustomComparers.csproj">
-      <Project>{03b013bc-c74f-4789-b033-5273b4cd0be3}</Project>
-      <Name>CustomComparers</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

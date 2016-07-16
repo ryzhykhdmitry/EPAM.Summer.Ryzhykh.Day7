@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CustomComparers;
 
 namespace JaggedArrayBubble
 {
@@ -12,18 +11,17 @@ namespace JaggedArrayBubble
         /// <summary>
         /// Sort jagged array.
         /// </summary>
-        /// <param name="arr">Array.</param>
+        /// <param name="jaggedArray">Array.</param>
         /// <param name="compare">The implementation to use when comparing elements.</param>
-        public static void SortArray(int[][] arr, Delegate comparerDelegate)
+        public static void SortArray(int[][] jaggedArray, Func<int[], int[], int> comparer)
         {
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < jaggedArray.Length; i++)
             {
-                for (int j = i + 1; j < arr.Length; j++)
-                {
-                    var result = comparerDelegate.DynamicInvoke(arr[i], arr[j]);
-                    if ((int)result == 1)
+                for (int j = i + 1; j < jaggedArray.Length; j++)
+                {                    
+                    if (comparer(jaggedArray[i], jaggedArray[j]) == 1)
                     {
-                        Swap(ref arr[i], ref arr[j]);
+                        Swap(ref jaggedArray[i], ref jaggedArray[j]);
                     }
                 }
             }
@@ -32,27 +30,25 @@ namespace JaggedArrayBubble
         /// <summary>
         /// Sort jagged array.
         /// </summary>
-        /// <param name="arr">Array</param>
+        /// <param name="jaggedArray">Array</param>
         /// <param name="comparer">Comparer.</param>
-        public static void SortArray(int[][] arr, ICustomComparer comparer)
+        public static void SortArray(int[][] jaggedArray, IComparer<int[]> comparer)
         {
-            ComparersDelegate comparerDelegate = comparer.Compare;
-            BubbleSortWithDelegate.SortArray(arr, comparerDelegate);
+            Func<int[], int[], int> comparerDelegate = comparer.Compare;
+            BubbleSortWithDelegate.SortArray(jaggedArray, comparerDelegate);
         }
 
         /// <summary>
         /// Allows to swap arrays. 
         /// </summary>
-        /// <param name="arr1">First array.</param>
-        /// <param name="arr2">Second array.</param>
-        private static void Swap(ref int[] arr1, ref int[] arr2)
+        /// <param name="jaggedArray1">First array.</param>
+        /// <param name="jaggedArray2">Second array.</param>
+        private static void Swap(ref int[] jaggedArray1, ref int[] jaggedArray2)
         {
-            var temp = arr1;
-            arr1 = arr2;
-            arr2 = temp;
-        }
-
-        private delegate int ComparersDelegate(int[] arr1, int[] arr2);
+            var temp = jaggedArray1;
+            jaggedArray1 = jaggedArray2;
+            jaggedArray2 = temp;
+        }        
     }
 }
 

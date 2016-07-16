@@ -51,10 +51,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomComparers\CustomComparers.csproj">
-      <Project>{03b013bc-c74f-4789-b033-5273b4cd0be3}</Project>
-      <Name>CustomComparers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\JaggedArrayBubble\JaggedArrayBubble.csproj">
       <Project>{fd7835f6-2727-490b-a64a-5a6a9c84e2a4}</Project>
       <Name>JaggedArrayBubble</Name>
