@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BookLogicLayer")]
+[assembly: AssemblyTitle("BookStorageInterface")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BookLogicLayer")]
+[assembly: AssemblyProduct("BookStorageInterface")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9e517238-04c7-41a0-9f55-e0b9819aa3b2")]
+[assembly: Guid("66eacd2b-38ed-455e-b450-0b6c87c1456e")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D1A2C6B4-DAB0-4DBF-86BF-A9CC0A690EAE}</ProjectGuid>
+    <ProjectGuid>{A8127D1C-F368-463B-83A7-BBFC852C7E51}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JaggedArrayBubble.Tests</RootNamespace>
-    <AssemblyName>JaggedArrayBubble.Tests</AssemblyName>
+    <RootNamespace>BookService</RootNamespace>
+    <AssemblyName>BookService</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,10 +34,6 @@
       <HintPath>..\packages\NLog.4.3.4\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.4.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,8 +44,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tests.cs" />
+    <Compile Include="BookListService.cs" />
+    <Compile Include="CompareByAuthor.cs" />
+    <Compile Include="CompareByTitle.cs" />
+    <Compile Include="CompareByPages.cs" />
+    <Compile Include="CompareByYear.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookLogicLayer\BookLogicLayer.csproj">
+      <Project>{9e517238-04c7-41a0-9f55-e0b9819aa3b2}</Project>
+      <Name>BookLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookStorageInterface\BookStorageInterface.csproj">
+      <Project>{66eacd2b-38ed-455e-b450-0b6c87c1456e}</Project>
+      <Name>BookStorageInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookStorage\BookStorage.csproj">
+      <Project>{959483a1-163c-42e9-9a9e-68ccecbb1a17}</Project>
+      <Name>BookStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ParametersChecker\ParametersChecker.csproj">
+      <Project>{46b678c4-b188-4d43-a78b-9be7241113cc}</Project>
+      <Name>ParametersChecker</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="NLog.config">
@@ -59,18 +77,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\JaggedArrayBubble\JaggedArrayBubble.csproj">
-      <Project>{fd7835f6-2727-490b-a64a-5a6a9c84e2a4}</Project>
-      <Name>JaggedArrayBubble</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

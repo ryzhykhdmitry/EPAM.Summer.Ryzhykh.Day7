@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D1A2C6B4-DAB0-4DBF-86BF-A9CC0A690EAE}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{17A87B8C-AF9B-4E8F-A724-2D42F714521D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JaggedArrayBubble.Tests</RootNamespace>
-    <AssemblyName>JaggedArrayBubble.Tests</AssemblyName>
+    <RootNamespace>BookServiceConsoleTest</RootNamespace>
+    <AssemblyName>BookServiceConsoleTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,10 +37,6 @@
       <HintPath>..\packages\NLog.4.3.4\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.4.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,10 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tests.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -61,16 +61,26 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JaggedArrayBubble\JaggedArrayBubble.csproj">
-      <Project>{fd7835f6-2727-490b-a64a-5a6a9c84e2a4}</Project>
-      <Name>JaggedArrayBubble</Name>
+    <ProjectReference Include="..\BookLogicLayer\BookLogicLayer.csproj">
+      <Project>{9e517238-04c7-41a0-9f55-e0b9819aa3b2}</Project>
+      <Name>BookLogicLayer</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+    <ProjectReference Include="..\BookService\BookService.csproj">
+      <Project>{a8127d1c-f368-463b-83a7-bbfc852c7e51}</Project>
+      <Name>BookService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookStorageInterface\BookStorageInterface.csproj">
+      <Project>{66eacd2b-38ed-455e-b450-0b6c87c1456e}</Project>
+      <Name>BookStorageInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookStorage\BookStorage.csproj">
+      <Project>{959483a1-163c-42e9-9a9e-68ccecbb1a17}</Project>
+      <Name>BookStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ParametersChecker\ParametersChecker.csproj">
+      <Project>{46b678c4-b188-4d43-a78b-9be7241113cc}</Project>
+      <Name>ParametersChecker</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
