@@ -5,13 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using BookLogicLayer;
 using BookStorageInterface;
-using BookStorage;
-using ParametersChecker;
 using NLog;
 
 namespace BookService
 {
-    public class BookListService : Checker
+    public class BookListService 
     {
         #region Fields
         private static Logger logger = LogManager.GetCurrentClassLogger();
@@ -25,7 +23,7 @@ namespace BookService
         #region Constructors
         public BookListService(IBookListStorage repository)
         {
-            CheckRefOnNull(repository);
+            if (repository == null) throw new ArgumentNullException();
             this.repository = repository;
             Books = repository.LoadBooks().ToList<Book>();
         }
@@ -38,7 +36,7 @@ namespace BookService
         /// <param name="books">Collection of books</param>
         public void AddBook(IEnumerable<Book> books)
         {
-            CheckRefOnNull(books);
+            if (books == null) throw new ArgumentNullException();
             foreach (var book in books)
             {
                 AddBook(book);
@@ -50,7 +48,7 @@ namespace BookService
         /// <param name="book">Book</param>
         public void AddBook(Book book)
         {
-            CheckRefOnNull(book);
+            if (book == null) throw new ArgumentNullException();
             try
             {
                 if (this.Books.Contains<Book>(book))
@@ -70,7 +68,7 @@ namespace BookService
         /// <param name="book">Book</param>
         public void RemoveBook(Book book)
         {
-            CheckRefOnNull(book);
+            if (book == null) throw new ArgumentNullException();
             Books.Remove(book);
             repository.SaveBooks(this.Books);
         }
@@ -81,7 +79,7 @@ namespace BookService
         /// <param name="comparer">IComparer</param>
         public void SortBooks(IComparer<Book> comparer)
         {
-            CheckRefOnNull(comparer);
+            if (comparer == null) throw new ArgumentNullException();
             SortBooks(comparer.Compare);
             repository.SaveBooks(Books);
         }
@@ -91,7 +89,7 @@ namespace BookService
         /// <param name="comparer">Comparision</param>
         public void SortBooks(Comparison<Book> comparer)
         {
-            CheckRefOnNull(comparer);
+            if (comparer == null) throw new ArgumentNullException();
             Books.Sort(comparer);
             repository.SaveBooks(Books);
         }

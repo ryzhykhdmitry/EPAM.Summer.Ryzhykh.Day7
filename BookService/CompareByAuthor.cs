@@ -4,17 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BookLogicLayer;
-using ParametersChecker;
 
 namespace WorkWithBooks
 {
-    public class CompareByAuthor : Checker, IComparer<Book>
+    public class CompareByAuthor : IComparer<Book>
     {
         #region Public Methods
         public int Compare(Book first, Book second)
         {
-            CheckRefOnNull(first);
-            CheckRefOnNull(second);
+            if (first == null || second == null) throw new ArgumentNullException();
 
             return first.Author.CompareTo(second.Author);
         }

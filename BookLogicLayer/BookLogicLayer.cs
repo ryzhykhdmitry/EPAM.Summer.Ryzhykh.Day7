@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ParametersChecker;
 
 namespace BookLogicLayer
 {
     /// <summary>
     /// Books information class 
     /// </summary>
-    public class Book : Checker, IEquatable<Book>, IComparable<Book>
+    public class Book : IEquatable<Book>, IComparable<Book>
     {
         #region Fields
         public string Author { get; private set; }
@@ -29,10 +28,8 @@ namespace BookLogicLayer
         /// <param name="pages">Number of pages.</param>
         public Book(string author, string title, int year, int pages)
         {
-            CheckRefOnNull(author);
-            CheckRefOnNull(title);
-            if (pages <= 0 || year < 1454)
-                throw new ArgumentException();
+            if (author == null || title == null) throw new ArgumentNullException();            
+            if (pages <= 0 || year < 1454) throw new ArgumentException();
             Author = author;
             Title = title;
             Year = year;
@@ -41,6 +38,7 @@ namespace BookLogicLayer
 
         public Book() { }
         #endregion
+
         #region Methods
 
         /// <summary>

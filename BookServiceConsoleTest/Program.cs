@@ -26,13 +26,13 @@ namespace BookServiceConsoleTest
             Book book1 = new Book("Franz Kafka", "The Castle", 1926, 416);
             Book book2 = new Book("Michel Houellebecq", "Platform", 2001, 462);
             Book book3 = new Book("Haruki Murakami", "Norwegian wood", 1987, 365);
-            Book book4 = new Book("George Orwell", "Nineteen Eighty-Four", 1949, 368);
-           
+            Book book4 = new Book("George Orwell", "Nineteen Eighty-Four", 1949, 368);            
+
 
             libraryService.AddBook(book1);
             libraryService.AddBook(book2);
             libraryService.AddBook(book3);
-            libraryService.AddBook(book4);            
+            libraryService.AddBook(book4);           
 
             foreach (var book in libraryService.Books)
             {

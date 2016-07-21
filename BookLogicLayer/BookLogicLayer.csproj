@@ -48,12 +48,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ParametersChecker\ParametersChecker.csproj">
-      <Project>{46b678c4-b188-4d43-a78b-9be7241113cc}</Project>
-      <Name>ParametersChecker</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

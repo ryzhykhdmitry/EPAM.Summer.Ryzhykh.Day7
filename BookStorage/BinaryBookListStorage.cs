@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ParametersChecker;
 using BookLogicLayer;
 using BookStorageInterface;
 using System.IO;
@@ -11,7 +10,7 @@ using NLog;
 
 namespace BookStorage
 {
-    public class BinaryBookListStorage : Checker, IBookListStorage
+    public class BinaryBookListStorage : IBookListStorage
     {
         #region Fields
         private static Logger logger = LogManager.GetCurrentClassLogger();
@@ -21,7 +20,7 @@ namespace BookStorage
         #region Constructor
         public BinaryBookListStorage(string fileName)
         {
-            CheckRefOnNull(fileName);
+            if (fileName == null) throw new ArgumentNullException();
             FileName = fileName;
         }
 
@@ -64,7 +63,7 @@ namespace BookStorage
         /// <param name="books">Collection of books</param>
         public void SaveBooks(IEnumerable<Book> books)
         {
-            CheckRefOnNull(books);
+            if (books == null) throw new ArgumentNullException();
             try
             {
                 using (BinaryWriter writer = new BinaryWriter(File.Open(FileName, FileMode.OpenOrCreate)))
