@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookLogicLayer
 {
+    [Serializable]
     /// <summary>
     /// Books information class 
     /// </summary>

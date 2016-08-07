@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{17A87B8C-AF9B-4E8F-A724-2D42F714521D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{39D8D310-4D93-4C46-A13E-E6E78DDA3E82}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BookServiceConsoleTest</RootNamespace>
-    <AssemblyName>BookServiceConsoleTest</AssemblyName>
+    <RootNamespace>XMLExporterLINQ</RootNamespace>
+    <AssemblyName>XMLExporterLINQ</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.3.4\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,52 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="XMLExporterLINQ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <Content Include="NLog.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="NLog.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BinarySerialization\BinarySerialization.csproj">
-      <Project>{565dc06a-b249-4114-95e7-99e0cde55699}</Project>
-      <Name>BinarySerialization</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BookLogicLayer\BookLogicLayer.csproj">
       <Project>{9e517238-04c7-41a0-9f55-e0b9819aa3b2}</Project>
       <Name>BookLogicLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BookService\BookService.csproj">
-      <Project>{a8127d1c-f368-463b-83a7-bbfc852c7e51}</Project>
-      <Name>BookService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BookStorageInterface\BookStorageInterface.csproj">
-      <Project>{66eacd2b-38ed-455e-b450-0b6c87c1456e}</Project>
-      <Name>BookStorageInterface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BookStorage\BookStorage.csproj">
-      <Project>{959483a1-163c-42e9-9a9e-68ccecbb1a17}</Project>
-      <Name>BookStorage</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XMLExporterInterface\XMLExporterInterface.csproj">
       <Project>{340095f7-075b-4e17-bcfb-94bc0087ba9c}</Project>
       <Name>XMLExporterInterface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XMLExporterLINQ\XMLExporterLINQ.csproj">
-      <Project>{39d8d310-4d93-4c46-a13e-e6e78dda3e82}</Project>
-      <Name>XMLExporterLINQ</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XMLExporterXMLWriter\XMLExporterXMLWriter.csproj">
-      <Project>{58664870-a4a0-4f11-8b98-9be3af92b94b}</Project>
-      <Name>XMLExporterXMLWriter</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

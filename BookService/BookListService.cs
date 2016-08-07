@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BookLogicLayer;
 using BookStorageInterface;
 using NLog;
+using XMLExporterInterface;
 
 namespace BookService
 {
@@ -60,6 +61,16 @@ namespace BookService
             {
                // logger.Error("Cannot add books: {0}", e.Message);
             }
+        }
+
+        /// <summary>
+        /// Export book to the XML
+        /// </summary>
+        /// <param name="filePath">File path.</param>
+        /// <param name="exporter">Exporter.</param>
+        public void ExportToXML(string filePath, IXMLExporter exporter)
+        {
+            exporter.Export(this.Books, filePath);
         }
 
         /// <summary>
